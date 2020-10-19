@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Motok_Andreea_Lab2"
         mc:Ignorable="d"
         Title="Virtual Doughnuts Factory" Height="450" Width="800" ResizeMode="NoResize">
-    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Margin="0,0,0,-6">
+    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Margin="0,0,0,-6" Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="23*"/>
             <ColumnDefinition Width="17*"/>
@@ -56,16 +56,18 @@
         <TextBox x:Name="txtVanillaFilled" Grid.Column="1" HorizontalAlignment="Left" Margin="38,0,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="75" IsReadOnlyCaretVisible="True" Height="26"/>
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="130" Margin="0,26,0,0">
             <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
+                <MenuItem Header="Exit" Click="exitToolStripMenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="_Doughnuts">
                 <MenuItem Header="Make"/>
                 <MenuItem Header="Raised">
-                    <MenuItem x:Name="glazedMenuItem" Header="Glazed"/>
-                    <MenuItem x:Name="sugarMenuItem" Header="Sugar"/>
+                    <MenuItem x:Name="glazedToolStripMenuItem" Header="Glazed" Click="glazedToolStripMenuItem_Click" IsCheckable="True"/>
+                    <MenuItem x:Name="sugarToolStripMenuItem" Header="Sugar" IsCheckable="True" Click="sugarToolStripMenuItem_Click"/>
                 </MenuItem>
                 <MenuItem Header="Filled"/>
             </MenuItem>
+            <MenuItem x:Name="mnuStop" Header="Stop"/>
+            
 
         </Menu>
 
