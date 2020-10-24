@@ -20,23 +20,29 @@ namespace Motok_Andreea_Lab2
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DoughnutMachine myDoughnutMachine;
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-
-        private void frmMain_Loaded(object sender, RoutedEventArgs e)
-        {
-            myDoughnutMachine = new DoughnutMachine();
-            myDoughnutMachine.DoughnutComplete += new DoughnutMachine.DoughnutCompleteDelegate(DoughnutCompleteHandler);
-        }
-
         private int mRaisedGlazed;
         private int mRaisedSugar;
         private int mFilledLemon;
         private int mFilledChocolate;
         private int mFilledVanilla;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void txtGlazedRaised_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private DoughnutMachine myDoughnutMachine;
+
+        private void frmMain_Loaded(object sender, RoutedEventArgs e)
+        {
+            myDoughnutMachine = new DoughnutMachine();
+            myDoughnutMachine.DoughnutComplete += new
+            DoughnutMachine.DoughnutCompleteDelegate(DoughnutCompleteHandler);
+        }
 
         private void glazedToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -44,6 +50,7 @@ namespace Motok_Andreea_Lab2
             sugarToolStripMenuItem.IsChecked = false;
             myDoughnutMachine.MakeDoughnuts(DoughnutType.Glazed);
         }
+
         private void sugarToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
             glazedToolStripMenuItem.IsChecked = false;
@@ -64,6 +71,22 @@ namespace Motok_Andreea_Lab2
                     mRaisedSugar++;
                     txtSugarRaised.Text = mRaisedSugar.ToString();
                     break;
+                //...
+                case DoughnutType.Lemon:
+                    mFilledLemon++;
+                    txtLemonFilled.Text = mFilledLemon.ToString();
+                    break;
+
+                case DoughnutType.Chocolate:
+                    mFilledChocolate++;
+                    txtChocolateFilled.Text = mFilledChocolate.ToString();
+                    break;
+
+                case DoughnutType.Vanilla:
+                    mFilledVanilla++;
+                    txtVanillaFilled.Text = mFilledVanilla.ToString();
+                    break;
+
 
             }
         }
@@ -80,10 +103,13 @@ namespace Motok_Andreea_Lab2
 
         private void txtQuantity_KeyPress(object sender, KeyEventArgs e)
         {
-            if(!(e.Key>=Key.D0 && e.Key<=Key.D9))
+            if (!(e.Key >= Key.D0 && e.Key <= Key.D9))
             {
-                MessageBox.Show("Numai cifre se pot introduce!", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Numai cifre se pot introduce!", "Input Error", MessageBoxButton.OK,
+               MessageBoxImage.Error);
             }
         }
+
+        
     }
 }
